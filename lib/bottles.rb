@@ -1,43 +1,19 @@
 class Bottles
-  def verse(number)
-    <<-VERSE
-#{first_verse(number)}
-#{second_verse(number - 1)}
-  VERSE
+  def song
+    verses(99, 0)
   end
 
-  def first_verse(number)
-    case number
-    when 1
-      "#{number} bottle of beer on the wall, #{number} bottle of beer."
-    when 0
-      "No more bottles of beer on the wall, no more bottles of beer."
-    else
-      "#{number} bottles of beer on the wall, #{number} bottles of beer."
-    end
+  def verses(hi, lo)
+    hi.downto(lo).map { |n| verse(n) }.join("\n")
   end
 
-  def second_verse(number)
-    case number
-    when 1
-      "Take one down and pass it around, #{number} bottle of beer on the wall."
-    when 0
-      "Take it down and pass it around, no more bottles of beer on the wall."
-    when -1
-      "Go to the store and buy some more, 99 bottles of beer on the wall."
-    else
-      "Take one down and pass it around, #{number} bottles of beer on the wall."
-    end
+  def verse(n)
+    "#{n == 0 ? 'No more' : n} bottle#{'s' if n != 1}" +
+    " of beer on the wall, " +
+    "#{n == 0 ? 'no more' :n} bottle#{'s' if n != 1} of beer.\n" +
+    "#{ n > 0 ? "Take #{n > 1 ? 'one' : 'it'} down and pass it around"
+              : "Go to the store and buy some more"}, " +
+    "#{n-1 < 0 ? 99 : n-1 == 0 ? 'no more' : n-1} bottle#{'s' if n-1 !=1}" +
+    " of beer on the wall.\n"
   end
-
-  def verses(one, two)
-    <<-VERSE
-#{first_verse(one)}
-#{second_verse(one - 1)}
-
-#{first_verse(two)}
-#{second_verse(two - 1)}
-  VERSE
-  end
-
 end
