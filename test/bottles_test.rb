@@ -8,7 +8,8 @@ require "minitest/pride"
 # require_relative '../lib/bottles_1_4'
 # require_relative '../lib/bottles_3'
 # require_relative '../lib/bottles_4'
-require_relative '../lib/bottles_5'
+# require_relative '../lib/bottles_5'
+require_relative '../lib/bottles_6'
 
 class BottlesTest < Minitest::Test
   def test_the_first_verse
